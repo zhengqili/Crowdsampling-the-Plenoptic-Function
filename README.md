@@ -15,15 +15,15 @@ The code skeleton is based on "https://github.com/junyanz/pytorch-CycleGAN-and-p
  
 * Download and unzip data from 
 
-(0) Readme file: https://research.cs.cornell.edu/megadepth/dataset/CrowdSampling/README.txt
-(1) Effiel Tower: https://research.cs.cornell.edu/megadepth/dataset/CrowdSampling/0000.zip
-(2) Top of the Rock: https://research.cs.cornell.edu/megadepth/dataset/CrowdSampling/0011.zip
-(3) Sacre Coeur: https://research.cs.cornell.edu/megadepth/dataset/CrowdSampling/0013.zip
-(4) Lincoln Memorial: https://research.cs.cornell.edu/megadepth/dataset/CrowdSampling/0021.zip
-(5) Pantheon: https://research.cs.cornell.edu/megadepth/dataset/CrowdSampling/0023.zip   
-(6) Trevi Fountain: https://research.cs.cornell.edu/megadepth/dataset/CrowdSampling/0036.zip
-(7) Piazza Navona: https://research.cs.cornell.edu/megadepth/dataset/CrowdSampling/0057.zip
-(8) Mount Rushmore: https://research.cs.cornell.edu/megadepth/dataset/CrowdSampling/1589.zip
+*  Readme file: https://research.cs.cornell.edu/megadepth/dataset/CrowdSampling/README.txt
+*  Effiel Tower: https://research.cs.cornell.edu/megadepth/dataset/CrowdSampling/0000.zip
+*  Top of the Rock: https://research.cs.cornell.edu/megadepth/dataset/CrowdSampling/0011.zip
+*  Sacre Coeur: https://research.cs.cornell.edu/megadepth/dataset/CrowdSampling/0013.zip
+* Lincoln Memorial: https://research.cs.cornell.edu/megadepth/dataset/CrowdSampling/0021.zip
+*  Pantheon: https://research.cs.cornell.edu/megadepth/dataset/CrowdSampling/0023.zip   
+*  Trevi Fountain: https://research.cs.cornell.edu/megadepth/dataset/CrowdSampling/0036.zip
+*  Piazza Navona: https://research.cs.cornell.edu/megadepth/dataset/CrowdSampling/0057.zip
+*  Mount Rushmore: https://research.cs.cornell.edu/megadepth/dataset/CrowdSampling/1589.zip
 
 * Download and unzip pretrained models from https://research.cs.cornell.edu/megadepth/dataset/CrowdSampling/pretrain_models.zip, and put the folders in the same directory as evaluation.py
 
