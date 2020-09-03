@@ -1,4 +1,4 @@
-# Crowdsampling-the-Plenoptic-Function release 
+# Crowdsampling-the-Plenoptic-Function 
 
 * This is the evaluation code for reproducing the results in the paper Crowdsampling The Plenoptic Function, Li etal. ECCV 2020 (Oral)" .
 
