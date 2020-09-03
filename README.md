@@ -1,10 +1,10 @@
 # Crowdsampling-the-Plenoptic-Function release 
 
-This is the evaluation code for reproducing the results in the paper Crowdsampling The Plenoptic Function, Li etal. ECCV 2020" .
+* This is the evaluation code for reproducing the results in the paper Crowdsampling The Plenoptic Function, Li etal. ECCV 2020 (Oral)" .
 
-Website: http://www.cs.cornell.edu/projects/cgintrinsics/
+* Website: https://research.cs.cornell.edu/crowdplenoptic/
 
-The code skeleton is based on "https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix". If you use our code for academic purposes, please consider citing:
+* The code skeleton is based on "https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix". If you use our code for academic purposes, please consider citing:
 
     @inproceedings{li2018cgintrinsics,
 	  	title={Crowdsampling the Plenoptic Function},
