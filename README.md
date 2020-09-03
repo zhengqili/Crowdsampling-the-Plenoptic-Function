@@ -1,20 +1,38 @@
 # Crowdsampling-the-Plenoptic-Function release 
 
-evaluation code for reproducing the results.
+This is the evaluation code for reproducing the results in the paper Crowdsampling The Plenoptic Function, Li etal. ECCV 2020" .
 
-Download and unzip pretrained models from and put all the folders in the same directory as evaluation.py
+Website: http://www.cs.cornell.edu/projects/cgintrinsics/
 
+The code skeleton is based on "https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix". If you use our code for academic purposes, please consider citing:
 
-To run the evaluation, 
+    @inproceedings{li2018cgintrinsics,
+	  	title={Crowdsampling the Plenoptic Function},
+      author={Li, Zhengqi and Xian, Wenqi and Davis, Abe and Snavely, Noah},
+	  	booktitle={European Conference on Computer Vision (ECCV)},
+	  	year={2020}
+	}
+ 
+* Download and unzip data from 
 
-change variable "root" and "data_dir" in evaluation.py to code directory and data directory respectively. The code is not highly optimized, so you have to use 4 GPUs with > 11GB memory to run the evaluation 
+(0) Readme file: https://research.cs.cornell.edu/megadepth/dataset/CrowdSampling/README.txt
+(1) Effiel Tower: https://research.cs.cornell.edu/megadepth/dataset/CrowdSampling/0000.zip
+(2) Top of the Rock: https://research.cs.cornell.edu/megadepth/dataset/CrowdSampling/0011.zip
+(3) Sacre Coeur: https://research.cs.cornell.edu/megadepth/dataset/CrowdSampling/0013.zip
+(4) Lincoln Memorial: https://research.cs.cornell.edu/megadepth/dataset/CrowdSampling/0021.zip
+(5) Pantheon: https://research.cs.cornell.edu/megadepth/dataset/CrowdSampling/0023.zip   
+(6) Trevi Fountain: https://research.cs.cornell.edu/megadepth/dataset/CrowdSampling/0036.zip
+(7) Piazza Navona: https://research.cs.cornell.edu/megadepth/dataset/CrowdSampling/0057.zip
+(8) Mount Rushmore: https://research.cs.cornell.edu/megadepth/dataset/CrowdSampling/1589.zip
 
-Trevi Fountain: python evaluation.py --dataset trevi --max_depth 4 --ref_fov 70 --warp_src_img 1
+* Download and unzip pretrained models from https://research.cs.cornell.edu/megadepth/dataset/CrowdSampling/pretrain_models.zip, and put the folders in the same directory as evaluation.py
 
-The Pantheon: python evaluation.py --dataset pantheon --max_depth 25 --ref_fov 65 --warp_src_img 1
+* To run the evaluation, change variable "root" and "data_dir" in script evaluation.py to code directory and data directory respectively. The released code is not highly optimized, so you have to use 4 GPUs with > 11GB memory to run the evaluation. 
 
-Top of the Rock: python evaluation.py --dataset rock --max_depth 75 --ref_fov 70 --warp_src_img 1
-
-Sacre Coeur: python evaluation.py --dataset coeur --max_depth 20 --ref_fov 65 --warp_src_img 1
-
-Piazza Navona: python evaluation.py --dataset navona --max_depth 25 --ref_fov 70 --warp_src_img 1
+```bash
+    Trevi Fountain: python evaluation.py --dataset trevi --max_depth 4 --ref_fov 70 --warp_src_img 1
+    The Pantheon: python evaluation.py --dataset pantheon --max_depth 25 --ref_fov 65 --warp_src_img 1
+    Top of the Rock: python evaluation.py --dataset rock --max_depth 75 --ref_fov 70 --warp_src_img 1
+    Sacre Coeur: python evaluation.py --dataset coeur --max_depth 20 --ref_fov 65 --warp_src_img 1
+    Piazza Navona: python evaluation.py --dataset navona --max_depth 25 --ref_fov 70 --warp_src_img 1
+```
