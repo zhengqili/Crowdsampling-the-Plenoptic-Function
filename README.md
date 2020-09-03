@@ -8,7 +8,7 @@
 
     @inproceedings{li2018cgintrinsics,
 	  	title={Crowdsampling the Plenoptic Function},
-      author={Li, Zhengqi and Xian, Wenqi and Davis, Abe and Snavely, Noah},
+     		author={Li, Zhengqi and Xian, Wenqi and Davis, Abe and Snavely, Noah},
 	  	booktitle={European Conference on Computer Vision (ECCV)},
 	  	year={2020}
 	}
