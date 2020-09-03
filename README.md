@@ -2,6 +2,9 @@
 
 evaluation code for reproducing the results.
 
+Download and unzip pretrained models from and put all the folders in the same directory as evaluation.py
+
+
 To run the evaluation, 
 
 change variable "root" and "data_dir" in evaluation.py to code directory and data directory respectively. The code is not highly optimized, so you have to use 4 GPUs with > 11GB memory to run the evaluation 
