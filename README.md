@@ -1,4 +1,4 @@
-# Crowdsampling-the-Plenoptic-FunctionWe release 
+# Crowdsampling-the-Plenoptic-Function release 
 
 evaluation code for reproducing the results.
 
