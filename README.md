@@ -4,14 +4,7 @@
 
 * Website: https://research.cs.cornell.edu/crowdplenoptic/
 
-* The code skeleton is based on "https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix". If you use our code for academic purposes, please consider citing:
-
-    @inproceedings{li2018cgintrinsics,
-	  	title={Crowdsampling the Plenoptic Function},
-     		author={Li, Zhengqi and Xian, Wenqi and Davis, Abe and Snavely, Noah},
-	  	booktitle={European Conference on Computer Vision (ECCV)},
-	  	year={2020}
-	}
+* The code skeleton is based on "https://github.com/junyanz/pytorch-CycleGAN-and-pix2pix".
  
 * Download and unzip data from 
 
