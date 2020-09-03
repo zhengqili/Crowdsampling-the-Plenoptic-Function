@@ -1,6 +1,6 @@
 # Crowdsampling-the-Plenoptic-FunctionWe release 
 
-evaluation code for reproducing the results since releasing robust training code is not easy given the complexity of the code.
+evaluation code for reproducing the results.
 
 To run the evaluation, 
 
