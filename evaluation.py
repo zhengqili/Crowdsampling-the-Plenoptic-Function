@@ -11,18 +11,8 @@ from models.models import create_model
 import random
 import models
 torch.manual_seed(0)
-
 opt = TrainOptions().parse()  # set CUDA_VISIBLE_DEVICES before import torch
 
-
-root = '/phoenix/S7/zl548/feature_mpi/'
-data_dir = root + '/Flickr100M/data/%04d/dense_sphere_0/'%scene_id
-
-local_dir = root + '/release_code/'
-
-opt.root = root
-opt.local_dir = local_dir
-opt.root = root
 
 if opt.dataset == 'trevi':
 	scene_id = 36
@@ -35,6 +25,13 @@ elif opt.dataset == 'rock':
 elif opt.dataset == 'navona':
 	scene_id = 57
 
+root = '/home/zl548/'
+data_dir = root + '/Flickr100M/%04d/dense_sphere_0/'%scene_id
+local_dir = root + '/Crowdsampling-the-Plenoptic-Function/'
+
+opt.root = root
+opt.local_dir = local_dir
+opt.root = root
 
 test_num_threads = 3
 test_data_loader = CreateLandmarksDataLoader(opt, data_dir, 'test', test_num_threads)
