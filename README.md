@@ -53,3 +53,16 @@ Follow the commands below:
    
    python evaluation.py --dataset trevi --max_depth 4 --ref_fov 70 --warp_src_img 1
 ```
+
+## Cite
+Please cite our work if you find it useful:
+```bash
+@inproceedings{Li2020,
+Author = {Zhengqi Li and Wenqi Xian and Abe Davis and Noah Snavely},
+Title = {Crowdsampling the Plenoptic Function},
+Year = {2020},
+booktitle = {Proc. European Conference on Computer Vision (ECCV)},
+}
+```
+
+
