@@ -1,4 +1,4 @@
-# Crowdsampling-the-Plenoptic-Function 
+# Crowdsampling the Plenoptic Function 
 
 ## Introduction
 This repository is a PyTorch implementation of the paper:
