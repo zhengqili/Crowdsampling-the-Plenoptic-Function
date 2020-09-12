@@ -59,13 +59,3 @@ for i, data in enumerate(test_dataset):
 	model.set_input(targets)
 	model.render_wander(save_root_dir)
 	sys.exit()
-	# if count >= 50:
-		# sys.exit()
-
-	# model.save('latest_%s_%s_model_'%(opt.dataset, opt.log_comment) + opt.model_E + '_lr_' + str(opt.lr))
-
-		# 		# if epoch >= 30:
-		# 		# 	print('we are done!!!')
-		# 		# 	sys.exit()
-
-	# model.update_learning_rate()
