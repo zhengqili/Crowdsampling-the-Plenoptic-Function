@@ -53,6 +53,26 @@ Follow the commands below:
    
    python evaluation.py --dataset trevi --max_depth 4 --ref_fov 70 --warp_src_img 1
 ```
+### Demo of novel view synthesis:
+```bash
+   # Usage
+   # python evaluation.py --dataset <name> --max_depth <max depth> --ref_fov <fov> --warp_src_img 1 --where_add adain --img_a_name xxx --img_b_name xxx --img_c_name xxx
+ 
+   python wander.py --dataset trevi --max_depth 4 --ref_fov 70 --warp_src_img 1  --where_add adain --img_a_name 5094768508_fa56e355bd.jpg  -
+-img_b_name 34558526690_e5ba5b3b9d.jpg --img_c_name 34558526690_e5ba5b3b9d.jpg
+```
+where img_a_name is image name associated with center target viewpoint, img_b_name=img_c_name is the image whose apperance we would like to condition on.
+
+### Demo of novel view synthesis:
+```bash
+   # Usage
+   # python evaluation.py --dataset <name> --max_depth <max depth> --ref_fov <fov> --warp_src_img 1 --where_add adain --img_a_name xxx --img_b_name xxx --img_c_name xxx
+ 
+   python wander.py --dataset trevi --max_depth 4 --ref_fov 70 --warp_src_img 1  --where_add adain --img_a_name 5094768508_fa56e355bd.jpg  -
+-img_b_name 34558526690_e5ba5b3b9d.jpg --img_c_name 34558526690_e5ba5b3b9d.jpg
+```
+where img_a_name is image name associated with center target viewpoint, img_b_name=img_c_name is the image whose apperance we would like to condition on. The results will be saved in folder demo_wander_trevi.
+
 
 ## Cite
 Please cite our work if you find it useful:
