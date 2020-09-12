@@ -4,6 +4,7 @@
 This repository is a PyTorch implementation of the paper:
 
 **Crowdsampling The Plenoptic Function**, ECCV 2020. 
+
 [[Project Website]](https://research.cs.cornell.edu/crowdplenoptic/) [[Paper]](https://arxiv.org/pdf/2007.15194.pdf) [[Video]](https://www.youtube.com/watch?v=MAVFKWX8LYo)
 
 [Zhengqi Li](https://www.cs.cornell.edu/~zl548/),
