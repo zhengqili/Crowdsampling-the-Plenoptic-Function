@@ -28,7 +28,7 @@ Download and unzip data from the links below:
 Read more about the dataset in [Readme file](https://research.cs.cornell.edu/megadepth/dataset/CrowdSampling/README.txt).
 
 ## Dependency
-The code is tested with Pytorch >= 1.2, the depdenency library includes PIL, opencv, skimage, json
+The code is tested with Pytorch >= 1.2, the depdenency library includes PIL, opencv, skimage, json, scipy.
 
 ## Pretrained Model
 Download and unzip pretrained models from [link](https://research.cs.cornell.edu/megadepth/dataset/CrowdSampling/pretrain_models.zip).
