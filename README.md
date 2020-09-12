@@ -16,14 +16,14 @@ This repository is a PyTorch implementation of the paper:
 ## Dataset
 Download and unzip data from the links below: 
 
-*[[Effiel Tower]](https://research.cs.cornell.edu/megadepth/dataset/CrowdSampling/0000.zip)
-*[[Top of the Roc]](https://research.cs.cornell.edu/megadepth/dataset/CrowdSampling/0011.zip)
-*[[Sacre Coeur]](https://research.cs.cornell.edu/megadepth/dataset/CrowdSampling/0013.zip)
-*[[Lincoln Memorial]](https://research.cs.cornell.edu/megadepth/dataset/CrowdSampling/0021.zip)
-*[[Pantheon]](https://research.cs.cornell.edu/megadepth/dataset/CrowdSampling/0023.zip)
-*[[Trevi Fountain]](https://research.cs.cornell.edu/megadepth/dataset/CrowdSampling/0036.zip)
-*[[Piazza Navona]](https://research.cs.cornell.edu/megadepth/dataset/CrowdSampling/0057.zip)
-*[[Mount Rushmore]](https://research.cs.cornell.edu/megadepth/dataset/CrowdSampling/1589.zip)
+* [[Effiel Tower]](https://research.cs.cornell.edu/megadepth/dataset/CrowdSampling/0000.zip)
+* [[Top of the Roc]](https://research.cs.cornell.edu/megadepth/dataset/CrowdSampling/0011.zip)
+* [[Sacre Coeur]](https://research.cs.cornell.edu/megadepth/dataset/CrowdSampling/0013.zip)
+* [[Lincoln Memorial]](https://research.cs.cornell.edu/megadepth/dataset/CrowdSampling/0021.zip)
+* [[Pantheon]](https://research.cs.cornell.edu/megadepth/dataset/CrowdSampling/0023.zip)
+* [[Trevi Fountain]](https://research.cs.cornell.edu/megadepth/dataset/CrowdSampling/0036.zip)
+* [[Piazza Navona]](https://research.cs.cornell.edu/megadepth/dataset/CrowdSampling/0057.zip)
+* [[Mount Rushmore]](https://research.cs.cornell.edu/megadepth/dataset/CrowdSampling/1589.zip)
 
 Read more about the dataset in [Readme file](https://research.cs.cornell.edu/megadepth/dataset/CrowdSampling/README.txt).
 
