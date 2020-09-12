@@ -64,6 +64,9 @@ Follow the commands below:
 ```
 where img_a_name is the image associated with rendering target viewpoint, img_b_name=img_c_name is the image whose apperance we would like to condition on. The results will be saved in folder demo_wander_trevi.
 
+By running the example command, you should get the following results:
+![Alt Text](https://github.com/zhengqili/Crowdsampling-the-Plenoptic-Function/blob/master/demo/ours_34558526690_e5ba5b3b9d.jpg.gif)
+
 ### Demo of apperance inteporlation:
 ```bash
    # Usage
