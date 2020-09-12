@@ -66,7 +66,7 @@ where img_a_name is image name associated with center target viewpoint, img_b_na
 ### Demo of novel view synthesis:
 ```bash
    # Usage
-   # python evaluation.py --dataset <name> --max_depth <max depth> --ref_fov <fov> --warp_src_img 1 --where_add adain --img_a_name xxx --img_b_name xxx --img_c_name xxx
+   # python wander.py --dataset <name> --max_depth <max depth> --ref_fov <fov> --warp_src_img 1 --where_add adain --img_a_name xxx --img_b_name xxx --img_c_name xxx
  
    python wander.py --dataset trevi --max_depth 4 --ref_fov 70 --warp_src_img 1  --where_add adain --img_a_name 5094768508_fa56e355bd.jpg  -
 -img_b_name 34558526690_e5ba5b3b9d.jpg --img_c_name 34558526690_e5ba5b3b9d.jpg
