@@ -15,15 +15,15 @@ opt = TrainOptions().parse()  # set CUDA_VISIBLE_DEVICES before import torch
 
 
 if opt.dataset == 'trevi':
-	scene_id = 36
+    scene_id = 36
 elif opt.dataset == 'pantheon':
-	scene_id = 23
+    scene_id = 23
 elif opt.dataset == 'coeur':
-	scene_id = 13
+    scene_id = 13
 elif opt.dataset == 'rock':
     scene_id = 11
 elif opt.dataset == 'navona':
-	scene_id = 57
+    scene_id = 57
 
 root = '/home/zl548/'
 data_dir = root + '/Flickr100M/%04d/dense_sphere_0/'%scene_id
@@ -56,21 +56,21 @@ lpips_model = models.PerceptualLoss(model='net', net='alex', use_gpu=True, gpu_i
 
 for i, data in enumerate(test_dataset):
 
-	global_step = global_step + 1
-	print('global_step', global_step)
-	targets = data
+    global_step = global_step + 1
+    print('global_step', global_step)
+    targets = data
 
-	model.set_input(targets)
-	l1_error, psnr, lpips, valid = model.evaluate_all(lpips_model)
+    model.set_input(targets)
+    l1_error, psnr, lpips, valid = model.evaluate_all(lpips_model)
 
-	print('l1_error ', l1_error)
-	print('psnr ', psnr)
-	print('lpips ', lpips)
+    print('l1_error ', l1_error)
+    print('psnr ', psnr)
+    print('lpips ', lpips)
 
-	total_l1 += l1_error
-	total_psnr += psnr
-	total_lpips += lpips
-	count += valid
+    total_l1 += l1_error
+    total_psnr += psnr
+    total_lpips += lpips
+    count += valid
 
 avg_l1 = total_l1/count
 avg_psnr = total_psnr/count

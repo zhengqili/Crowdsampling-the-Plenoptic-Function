@@ -208,12 +208,9 @@ class RenderModel(BaseModel):
         return composite_rgb_img_a, torch.cat([render_rgb_mpi_a, proj_ref_alphas_a], dim=1)
             
 
-    def interpolate_appearance(self, save_root_dir, linear_intepolation):
+    def interpolate_appearance(self, save_root_dir):
 
         def get_latent_feature(img_a_full, warp_img_a):
-            # warp_concat = torch.cat([warp_img_a, self.composite_albedo_ref, self.composite_alpha_ref], dim=1)
-            # latent_z_a = self.netE.forward(warp_concat, img_a_full)
-
             composite_feature_ref = projector.over_composite(self.ref_feature_img_small.detach(), self.ref_albedo_rgba_mpi_small[:, -1:, :, :], premultiply_alpha=0).unsqueeze(0)
             warp_concat = torch.cat([warp_img_a, self.composite_albedo_ref, composite_feature_ref], dim=1)
 
@@ -222,7 +219,7 @@ class RenderModel(BaseModel):
             return latent_z_a
 
 
-        num_interpolations = 10
+        num_interpolations = 20
 
         # img_path = self.targets['img_path'][0]
         save_dir = save_root_dir + self.targets['img_path_a'][0] + '*' + self.targets['img_path_b'][0] + '*' + self.targets['img_path_c'][0] + '/'
@@ -238,7 +235,6 @@ class RenderModel(BaseModel):
 
             img_a_full = Variable(self.targets['img_a_full'].cuda(1), requires_grad=False)
             img_b_full = Variable(self.targets['img_b_full'].cuda(1), requires_grad=False)
-            # img_c_full = Variable(self.targets['img_c_full'].cuda(1), requires_grad=False)
 
             img_a = Variable(self.targets['img_a'], requires_grad=False)
             img_b = Variable(self.targets['img_b'], requires_grad=False)
@@ -260,38 +256,18 @@ class RenderModel(BaseModel):
             latent_z_a = get_latent_feature(img_a_full, warp_img_a)
             latent_z_b = get_latent_feature(img_b_full, warp_img_b)
 
-            if linear_intepolation:
+            delta_f = (latent_z_b - latent_z_a) / num_interpolations
+            for delta_iter in range(num_interpolations + 1):
+                print(delta_iter)
+                x_app_embedding = latent_z_a + delta_iter * delta_f
 
-                pred_render_rgb_a, warp_alphas_a, warp_mpi_depth_a, proj_ref_mask_a  = self.infer_rgb_from_mpi(ref_mpi_concat, img_c,
-                                                                                                               latent_z_a,
-                                                                                                               self.K_ref, K_c, 
-                                                                                                               R_cr, t_cr, self.mpi_planes)
-
-                pred_render_rgb_b, warp_alphas_b, warp_mpi_depth_b, proj_ref_mask_b  = self.infer_rgb_from_mpi(ref_mpi_concat, img_c,
-                                                                                                               latent_z_b,
-                                                                                                               self.K_ref, K_c, 
-                                                                                                               R_cr, t_cr, self.mpi_planes)
-                delta_f = (pred_render_rgb_b - pred_render_rgb_a)/num_interpolations
-
-                for delta_iter in range(num_interpolations + 1):
-                    print(delta_iter)                
-                    pred_render_rgb_intepo = pred_render_rgb_a + delta_iter * delta_f
-                    pred_render_rgb_np = pred_render_rgb_intepo[0].data.cpu().numpy().transpose(1, 2, 0)
-                    cv2.imwrite(save_dir + 'linear_inteporlation_%d.jpg'%delta_iter, np.uint8(pred_render_rgb_np[:, :, ::-1] * 255) )
-
-            else:
-                delta_f = (latent_z_b - latent_z_a) / num_interpolations
-                for delta_iter in range(num_interpolations + 1):
-                    print(delta_iter)
-                    x_app_embedding = latent_z_a + delta_iter * delta_f
-
-                    pred_render_rgb_a, warp_alphas_a, warp_mpi_depth_a, proj_ref_mask_a,  = self.infer_rgb_from_mpi(ref_mpi_concat, img_c,
-                                                                                                                    x_app_embedding,
-                                                                                                                    self.K_ref, K_c, 
-                                                                                                                    R_cr, t_cr, self.mpi_planes)
-                    pred_render_rgb_a = pred_render_rgb_a * proj_ref_mask_a
-                    pred_render_rgb_np = pred_render_rgb_a[0].data.cpu().numpy().transpose(1, 2, 0)
-                    cv2.imwrite(save_dir + 'ours_inteporlation_%d.jpg'%delta_iter, np.uint8(pred_render_rgb_np[:, :, ::-1] * 255) )
+                pred_render_rgb_a, warp_alphas_a, warp_mpi_depth_a, proj_ref_mask_a,  = self.infer_rgb_from_mpi(ref_mpi_concat, img_c,
+                                                                                                                x_app_embedding,
+                                                                                                                self.K_ref, K_c, 
+                                                                                                                R_cr, t_cr, self.mpi_planes)
+                pred_render_rgb_a = pred_render_rgb_a * proj_ref_mask_a
+                pred_render_rgb_np = pred_render_rgb_a[0].data.cpu().numpy().transpose(1, 2, 0)
+                cv2.imwrite(save_dir + 'ours_inteporlation_%d.jpg'%delta_iter, np.uint8(pred_render_rgb_np[:, :, ::-1] * 255) )
 
 
 
@@ -390,6 +366,105 @@ class RenderModel(BaseModel):
     #             render_rgba_mpi_i = cv2.cvtColor(render_rgba_mpi_i, cv2.COLOR_RGBA2BGRA)
 
     #             cv2.imwrite(save_dir + 'rgba_%02d.png'%i, np.uint8(render_rgba_mpi_i * 255))
+
+    def render_wander(self, save_root_dir):
+
+        num_frames = 90
+        img_path = self.targets['img_path_c'][0]
+        img_name = img_path.split('/')[-1][:-4]
+
+        save_dir = save_root_dir + self.targets['img_path_a'][0] + '_' + self.targets['img_path_b'][0] + '/'
+
+        if not os.path.exists(save_dir):
+            os.makedirs(save_dir)
+
+        max_disp = 32.
+
+        max_trans = max_disp / self.targets['K_a'][0, 0, 0]  # Maximum camera translation to satisfy max_disp parameter
+        output_poses = []
+
+        for i in range(num_frames):
+            x_trans = max_trans * np.sin(2.0 * np.pi * float(i) / float(num_frames))
+            y_trans = max_trans * np.cos(2.0 * np.pi * float(i) / float(num_frames)) /2.0 #* 3.0 / 4.0
+            z_trans = -max_trans * np.sin(2.0 * np.pi * float(i) / float(num_frames)) / 2.0
+
+            i_pose = np.concatenate([
+                np.concatenate(
+                    [np.eye(3), np.array([x_trans, y_trans, z_trans])[:, np.newaxis]], axis=1),
+                    # [np.eye(3), np.array([x_trans, 0., 0.])[:, np.newaxis]], axis=1),
+                np.array([0.0, 0.0, 0.0, 1.0])[np.newaxis, :]
+            ],axis=0)[np.newaxis, :, :]
+
+            output_poses.append(i_pose)
+
+        with torch.no_grad():
+
+            K_a = Variable(self.targets['K_a'].cuda(), requires_grad=False)
+
+            R_ar = Variable(self.targets['R_ar'].cuda(), requires_grad=False)
+            t_ar = Variable(self.targets['t_ar'].cuda(), requires_grad=False)
+
+            K_b = Variable(self.targets['K_b'].cuda(), requires_grad=False)
+
+            R_br = Variable(self.targets['R_br'].cuda(), requires_grad=False)
+            t_br = Variable(self.targets['t_br'].cuda(), requires_grad=False)
+            
+            img_b_full = Variable(self.targets['img_b_full'].cuda(), requires_grad=False)
+            warp_img_b = Variable(self.targets['warp_img_b'].cuda(), requires_grad=False)
+
+            img_a = Variable(self.targets['img_a'].cuda(), requires_grad=False)
+            img_b = Variable(self.targets['img_b'].cuda(), requires_grad=False)
+
+            img_a_np = img_a[0].data.cpu().numpy().transpose(1, 2, 0)
+            img_b_np = img_b[0].data.cpu().numpy().transpose(1, 2, 0)
+
+            cv2.imwrite(save_dir + '/%s'%self.targets['img_path_a'][0], np.uint8(img_a_np[:, :, ::-1] * 255) )
+            cv2.imwrite(save_dir + '/%s'%self.targets['img_path_b'][0], np.uint8(img_b_np[:, :, ::-1] * 255) )
+
+            latent_z_b = self.get_latent_feature(img_b_full, warp_img_b)
+            ref_mpi_concat = torch.cat([self.ref_feature_img, self.ref_albedo_mpi], dim=1)
+
+            w, h = 512, 384
+
+            K_a[:, 0, 2] = K_a[:, 0, 2] * float(w)/img_a.size(3)
+            K_a[:, 1, 2] = K_a[:, 1, 2] * float(h)/img_a.size(2)
+
+            scale_factor = 1.25
+            K_a_large = K_a.clone()
+            K_a_large[:, 0, 2] = K_a[:, 0, 2] * scale_factor
+            K_a_large[:, 1, 2] = K_a[:, 1, 2] * scale_factor
+
+            img_a = nn.functional.interpolate(img_a, size=[h, w])
+            
+            _, render_rgba_mpi_ba = self.infer_app_mpi_from_mpi(ref_mpi_concat, nn.functional.interpolate(img_a, scale_factor=scale_factor),
+                                                                latent_z_b.to(1),
+                                                                self.K_ref, K_a_large, 
+                                                                R_ar, t_ar, self.mpi_planes)
+
+            render_rgba_mpi_ba_2 = render_rgba_mpi_ba.to(2)
+            K_a_large_2 = K_a_large.to(2)
+            K_a_2 = K_a.to(2)
+            mpi_planes_2 = self.mpi_planes.to(2)
+            
+            for i in range(num_frames):
+                print('render ', i)
+                pose = output_poses[i]
+                R_ta = Variable(torch.from_numpy(np.ascontiguousarray(pose[:, :3, :3])).contiguous().float().cuda(2), requires_grad=False)
+                t_ta = Variable(torch.from_numpy(np.ascontiguousarray(pose[:, :3, 3:])).contiguous().float().cuda(2), requires_grad=False)
+
+                proj_ref_imgs_a = self.mpi_render_view(render_rgba_mpi_ba.to(2), img_a, R_ta, t_ta, K_a_large.to(2), K_a.to(2), self.mpi_planes.to(2), cuda_id=2)#.to(1)
+
+                proj_ref_rgb_a = proj_ref_imgs_a[:, :-1, :, :]
+                proj_ref_alphas_a = proj_ref_imgs_a[:, -1:, :, :]
+                proj_ref_mask_a = torch.sum(proj_ref_alphas_a > 1e-8, dim=0, keepdim=True)
+                proj_ref_mask_a = (proj_ref_mask_a > self.opt.num_mpi_planes*3//4).type(torch.cuda.FloatTensor)
+
+                pred_render_rgb_ba = projector.over_composite(proj_ref_rgb_a, proj_ref_alphas_a)
+
+                pred_render_rgb_ba = pred_render_rgb_ba * proj_ref_mask_a
+                pred_render_rgb_np = pred_render_rgb_ba[0].data.cpu().numpy().transpose(1, 2, 0) 
+                cv2.imwrite(save_dir + '/wander_rgb_ours_%d.png'%i, np.uint8(pred_render_rgb_np[:, :, ::-1] * 255) )
+                cv2.imwrite(save_dir + '/wander_rgb_ours_%d.png'%(num_frames+i), np.uint8(pred_render_rgb_np[:, :, ::-1] * 255) )
 
 
     def generate_mpi_depth_planes(self, start_depth, end_depth, num_depths):
