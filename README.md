@@ -1,6 +1,5 @@
 # Crowdsampling the Plenoptic Function 
 
-## Introduction
 This repository contains a PyTorch implementation of the paper:
 
 **Crowdsampling The Plenoptic Function**, ECCV 2020. 
