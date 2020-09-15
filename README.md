@@ -92,4 +92,7 @@ booktitle = {Proc. European Conference on Computer Vision (ECCV)},
 }
 ```
 
+## License
+This repository is released under the Apache 2.0 license(http://www.apache.org/licenses/LICENSE-2.0).
+
 
