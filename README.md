@@ -83,7 +83,7 @@ where
 ## Cite
 Please cite our work if you find it useful:
 ```bash
-@inproceedings{Li2020,
+@inproceedings{li2020crowdsampling,
 Author = {Zhengqi Li and Wenqi Xian and Abe Davis and Noah Snavely},
 Title = {Crowdsampling the Plenoptic Function},
 Year = {2020},
