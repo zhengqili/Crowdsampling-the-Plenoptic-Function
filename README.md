@@ -74,6 +74,7 @@ where
 By running the example command, you should get the following result:
 ![Alt Text](https://github.com/zhengqili/Crowdsampling-the-Plenoptic-Function/blob/master/demo/ours_34558526690_e5ba5b3b9d.jpg.gif)
 
+
 ### Demo of apperance inteporlation:
 ```bash
    # Usage
@@ -85,6 +86,9 @@ where
 * img_a_name: image of starting apperance
 * img_b_name: image of end apperance
 * img_c_name: image associated with rendering target viewpoint
+
+By running the example command, you can get the following result:
+![Alt Text](https://github.com/zhengqili/Crowdsampling-the-Plenoptic-Function/blob/master/demo/ezgif-6-08f9beb9ee83.gif)
 
 
 ### TO DO: 
