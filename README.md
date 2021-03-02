@@ -88,7 +88,7 @@ where
 * img_b_name: image of end apperance
 * img_c_name: image associated with rendering target viewpoint
 
-By running the example command, you can get the following result:
+
 ![Alt Text](https://github.com/zhengqili/Crowdsampling-the-Plenoptic-Function/blob/master/demo/ezgif-6-08f9beb9ee83.gif)
 
 
