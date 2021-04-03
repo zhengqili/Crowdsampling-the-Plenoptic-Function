@@ -92,9 +92,6 @@ where
 ![Alt Text](https://github.com/zhengqili/Crowdsampling-the-Plenoptic-Function/blob/master/demo/ezgif-6-08f9beb9ee83.gif)
 
 
-### TO DO: 
-* Releasing two-stage training code
-
 ## Cite
 Please cite our work if you find it useful:
 ```bash
