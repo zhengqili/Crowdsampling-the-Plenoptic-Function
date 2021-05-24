@@ -96,10 +96,12 @@ where
 Please cite our work if you find it useful:
 ```bash
 @inproceedings{li2020crowdsampling,
-Author = {Zhengqi Li and Wenqi Xian and Abe Davis and Noah Snavely},
-Title = {Crowdsampling the Plenoptic Function},
-Year = {2020},
-booktitle = {Proc. European Conference on Computer Vision (ECCV)},
+  title={Crowdsampling the plenoptic function},
+  author={Li, Zhengqi and Xian, Wenqi and Davis, Abe and Snavely, Noah},
+  booktitle={European Conference on Computer Vision},
+  pages={178--196},
+  year={2020},
+  organization={Springer}
 }
 ```
 
