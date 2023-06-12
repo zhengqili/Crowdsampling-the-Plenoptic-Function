@@ -15,16 +15,16 @@ This repository contains a PyTorch implementation of the paper:
 ## Dataset
 Download and unzip data from the links below: 
 
-* [[Trevi Fountain]](https://research.cs.cornell.edu/megadepth/dataset/CrowdSampling/0036.zip)
-* [[Piazza Navona]](https://research.cs.cornell.edu/megadepth/dataset/CrowdSampling/0057.zip)
-* [[Top of the Rock]](https://research.cs.cornell.edu/megadepth/dataset/CrowdSampling/0011.zip)
-* [[Pantheon]](https://research.cs.cornell.edu/megadepth/dataset/CrowdSampling/0023.zip)
-* [[Sacre Coeur]](https://research.cs.cornell.edu/megadepth/dataset/CrowdSampling/0013.zip)
-* [[Lincoln Memorial]](https://research.cs.cornell.edu/megadepth/dataset/CrowdSampling/0021.zip)
-* [[Eiffel Tower]](https://research.cs.cornell.edu/megadepth/dataset/CrowdSampling/0000.zip)
-* [[Mount Rushmore]](https://research.cs.cornell.edu/megadepth/dataset/CrowdSampling/1589.zip)
+* [[Trevi Fountain]](https://research.cs.cornell.edu/projects/megadepth/dataset/CrowdSampling/0036.zip)
+* [[Piazza Navona]](https://research.cs.cornell.edu/projects/megadepth/dataset/CrowdSampling/0057.zip)
+* [[Top of the Rock]](https://research.cs.cornell.edu/projects/megadepth/dataset/CrowdSampling/0011.zip)
+* [[Pantheon]](https://research.cs.cornell.edu/projects/megadepth/dataset/CrowdSampling/0023.zip)
+* [[Sacre Coeur]](https://research.cs.cornell.edu/projects/megadepth/dataset/CrowdSampling/0013.zip)
+* [[Lincoln Memorial]](https://research.cs.cornell.edu/projects/megadepth/dataset/CrowdSampling/0021.zip)
+* [[Eiffel Tower]](https://research.cs.cornell.edu/projects/megadepth/dataset/CrowdSampling/0000.zip)
+* [[Mount Rushmore]](https://research.cs.cornell.edu/projects/megadepth/dataset/CrowdSampling/1589.zip)
 
-Read more about the dataset in [Readme file](https://research.cs.cornell.edu/megadepth/dataset/CrowdSampling/README.txt).
+Read more about the dataset in [Readme file](https://research.cs.cornell.edu/projects/megadepth/dataset/CrowdSampling/README.txt).
 
 ## Dependency
 The code is tested with Pytorch >= 1.2, the depdenency library includes
@@ -36,7 +36,7 @@ The code is tested with Pytorch >= 1.2, the depdenency library includes
 
 
 ## Pretrained Model
-Download and unzip pretrained models from [link](https://research.cs.cornell.edu/megadepth/dataset/CrowdSampling/pretrain_models.zip).
+Download and unzip pretrained models from [link](https://research.cs.cornell.edu/projects/megadepth/dataset/CrowdSampling/pretrain_models.zip).
 
 To use the pretrained model, put the folders under the project root directory.
 
